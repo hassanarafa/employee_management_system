@@ -6,15 +6,14 @@
     <input class="input-field" placeholder="كلمة المرور" type="password" />
 
     <button type="submit">دخول</button>
-
     <!-- Display Location -->
-    <p v-if="location">{{ location }}</p>
+    <!--    <p v-if="location">{{ location }}</p>-->
   </form>
 </template>
 
-<script lang="ts" setup>
-import { ref } from "vue";
+<script setup>
 
+import { ref } from "vue";
 const location = ref(null);
 
 
