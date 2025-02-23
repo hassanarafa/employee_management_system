@@ -1,9 +1,12 @@
 <template>
   <div class="logo-section">
     <img alt="Project Logo" class="logo" src="@/assets/golden-logo-template-free-png.webp"/>
-    <h1 class="project-name">مرحبا بعودتك</h1>
+    <h1 class="project-name">مرحبا</h1>
   </div>
 </template>
+
+<script lang="ts" setup>
+</script>
 
 <style scoped>
 .logo-section {
@@ -62,6 +65,3 @@
   }
 }
 </style>
-
-<script lang="ts" setup>
-</script>

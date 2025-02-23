@@ -1,13 +1,41 @@
 <template>
-  <form class="login-form">
+  <form class="login-form" @submit.prevent="getLocation">
     <h2>تسجيل الدخول</h2>
 
-    <input class="input-field" placeholder="اسم المستخدم" type="text"/>
-    <input class="input-field" placeholder="كلمة المرور" type="password"/>
+    <input class="input-field" placeholder="اسم المستخدم" type="text" />
+    <input class="input-field" placeholder="كلمة المرور" type="password" />
 
     <button type="submit">دخول</button>
+
+    <!-- Display Location -->
+    <p v-if="location">{{ location }}</p>
   </form>
 </template>
+
+<script lang="ts" setup>
+import { ref } from "vue";
+
+const location = ref(null);
+
+
+const getLocation = () => {
+  if ("geolocation" in navigator) {
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        const { latitude, longitude } = position.coords;
+        location.value = `الموقع الحالي: (${latitude}, ${longitude})`;
+      },
+      (error) => {
+        location.value = "تعذر الحصول على الموقع";
+        console.error("Error getting location:", error);
+      }
+    );
+  } else {
+    location.value = "الموقع غير مدعوم في هذا المتصفح";
+  }
+};
+</script>
+
 
 <style scoped>
 /* Form Container */
@@ -70,22 +98,33 @@ button:hover {
 @media (max-width: 1024px) {
   .login-form {
     max-width: 80%;
-    padding: 2.5rem;
+    padding: 1rem;
+    /* Adjusted padding for better spacing */
+    background: rgba(227, 162, 133, 0.18);
   }
 
   h2 {
     font-size: 1.8rem;
+    margin: 5px;
   }
 
   .input-field {
+    width: 85%;
     font-size: 1.1rem;
+    padding: 0.8rem;
+    /* Slightly reduced padding */
   }
 
   button {
-    font-size: 1.2rem;
+    width: 90%;
+    /* Reduce width */
+    padding: 0.8rem;
+    /* Reduce padding */
+    font-size: 1rem;
+    /* Decrease font size */
+    height: 50px;
+    /* Adjust button height */
+    margin: 5px;
   }
 }
 </style>
-
-<script lang="ts" setup>
-</script>

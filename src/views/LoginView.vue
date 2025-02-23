@@ -7,9 +7,7 @@
 
     <!-- Right Section: Login Form -->
     <div class="right-section">
-      <div class="form-wrapper">
-        <LoginForm/>
-      </div>
+      <LoginForm/>
     </div>
   </div>
 </template>
@@ -27,14 +25,14 @@ export default {
 </script>
 
 <style scoped>
-/* Base Styling */
+/* Full-screen container */
 .login-container {
   display: flex;
-  height: 100vh;
+  height: 98vh;
   flex-direction: row;
 }
 
-/* Left Section - Decreased Width */
+/* Left Section */
 .left-section {
   flex: 0.7;
   display: flex;
@@ -43,34 +41,18 @@ export default {
   background: #f26822;
   backdrop-filter: blur(10px);
   min-width: 200px;
+  height: 100vh;
 }
 
-/* Right Section - Increased Width */
+/* Right Section */
 .right-section {
   flex: 1.3;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 2rem;
   min-width: 300px;
   background: rgba(227, 162, 133, 0.18);
-}
-
-/* Form Wrapper - Increased Size */
-.form-wrapper {
-  width: 100%;
-  max-width: 500px;
-  padding: 2.5rem;
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(20px);
-  border-radius: 12px;
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
-  transition: transform 0.3s ease-in-out;
-  min-height: 400px;
-}
-
-.form-wrapper:hover {
-  transform: scale(1.02);
+  height: 100vh;
 }
 
 /* Responsive Design */
@@ -86,13 +68,8 @@ export default {
   }
 
   .right-section {
+    background: #ffff;
     width: 100%;
-    padding: 2rem;
-  }
-
-  .form-wrapper {
-    max-width: 500px;
   }
 }
-
 </style>
